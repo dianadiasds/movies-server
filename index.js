@@ -6,7 +6,9 @@ app.use(middleware);
 
 const bodyParser = require('body-parser');
 const parserMiddleware = bodyParser.json();
-
+app.use(parserMiddleware);
+const authRouter= require('./auth/router');
+app.use(authRouter);
 const userRouter = require('./user/router');
 app.use(userRouter);
 
@@ -16,6 +18,5 @@ const {Router} = express;
 const router = new Router();
 router.get('/', (request, response) => response.send(`Listening on ${port}`));
 
-app.use(parserMiddleware);
 app.use(router);
 app.listen(port);
