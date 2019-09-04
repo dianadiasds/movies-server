@@ -7,11 +7,18 @@ app.use(middleware);
 const bodyParser = require('body-parser');
 const parserMiddleware = bodyParser.json();
 app.use(parserMiddleware);
+
 const authRouter= require('./auth/router');
 app.use(authRouter);
+
 const userRouter = require('./user/router');
 app.use(userRouter);
 
+const movieRouter = require('./movie/router');
+app.use(movieRouter);
+
+const commentRouter = require('./comment/router');
+app.use(commentRouter);
 const port = process.env.PORT || 5000;
 
 const {Router} = express;
