@@ -5,7 +5,6 @@ const Comment = db.define(
     'comment',
     {
         comment: Sequelize.STRING,
-        score: Sequelize.INTEGER,
     }
 );
 
