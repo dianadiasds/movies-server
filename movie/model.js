@@ -1,17 +1,18 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 const User = require('../user/model');
+const Comment = require('../comment/model');
 
 const Movie = db.define(
     'movie',
     {
-        name: Sequelize.STRING,
-        description: Sequelize.TEXT,
+        title: Sequelize.STRING,
+        synopsis: Sequelize.TEXT,
         picture: Sequelize.STRING,
-        year: Sequelize.INTEGER,
-        score: Sequelize.INTEGER,
-        whydontwatch: Sequelize.STRING,
+        director: Sequelize.STRING,
+        yearOfRelease: Sequelize.INTEGER,
     }
 );
 Movie.belongsTo(User);
+Movie.hasMany(Comment);
 module.exports = Movie;

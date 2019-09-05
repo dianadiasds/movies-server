@@ -5,10 +5,8 @@ const movieRouter = new Router();
 const auth = require('../auth/middleware');
 
 movieRouter.get('/movies', (request, response, next) => {
-    const limit = 9;
-    let offset = request.query.offset === undefined ? 0 : request.query.offset;
     Movie
-        .findAndCountAll({limit, offset, order: [['id', 'ASC']]})
+        .findAll()
         .then(movie => {
             response.send(movie)
         })
